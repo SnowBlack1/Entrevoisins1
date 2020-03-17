@@ -20,7 +20,7 @@
             android:background="@color/design_default_color_primary" />
 
         <TextView
-            android:id="@+id/name_txt"
+            android:id="@+id/nameavatar_txt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="225dp"
@@ -51,7 +51,7 @@
         android:layout_margin="15dp">
 
         <LinearLayout
-            android:id="@+id/linear_layout"
+            android:id="@+id/linearlayout_infos"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
@@ -89,7 +89,7 @@
                 android:textSize="15sp" />
 
             <TextView
-                android:id="@+id/globe_txt"
+                android:id="@+id/social_txt"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_margin="5dp"
@@ -109,12 +109,13 @@
         android:layout_margin="15dp">
 
         <LinearLayout
+            android:id="@+id/linearlayout_aboutme"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/aboutme_txt"
+                android:id="@+id/aboutme_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingLeft="10dp"
@@ -126,7 +127,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/aboutMe"
+                android:id="@+id/aboutme_txt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingLeft="@dimen/activity_horizontal_margin"
