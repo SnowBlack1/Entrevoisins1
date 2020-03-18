@@ -4,10 +4,12 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.openclassrooms.entrevoisins.R;
+import com.openclassrooms.entrevoisins.di.DI;
+import com.openclassrooms.entrevoisins.service.NeighbourApiService;
 
 public class SpecificNeighbour extends AppCompatActivity {
 
@@ -20,15 +22,20 @@ public class SpecificNeighbour extends AppCompatActivity {
     private TextView aboutMeTitle;
     private TextView aboutMeText;
     private FloatingActionButton favBtn;
+    private NeighbourApiService neighbourService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_specific_neighbour);
+        neighbourService = DI.getNeighbourApiService();
 
 
 
         avatar = findViewById(R.id.avatar_img);
+        //Glide.with(this)
+               // .load(neighbour.getAvatarUrl())
+              //  .into(avatar);
 
         nameAvatar = findViewById(R.id.nameavatar_txt);
         //nameAvatar.setText();
