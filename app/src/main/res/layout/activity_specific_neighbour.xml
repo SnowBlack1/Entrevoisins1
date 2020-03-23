@@ -1,66 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/specificneighbour_layout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".ui.neighbour_list.SpecificNeighbour">
+    android:layout_height="match_parent">
 
-    <android.support.design.widget.CoordinatorLayout
-        android:id="@+id/coordinator_layout"
+    <ImageView
+        android:id="@+id/avatar_img"
         android:layout_width="match_parent"
-        android:layout_height="300dp">
+        android:layout_height="300dp"
+        android:layout_alignParentStart="true"
+        android:background="@color/design_default_color_primary"
+        android:scaleType="centerCrop"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:id="@+id/avatar_img"
-            android:layout_width="match_parent"
-            android:layout_height="314dp"
-            android:background="@color/design_default_color_primary" />
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        tools:ignore="MissingConstraints" />
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:minHeight="?attr/actionBarSize"
-            android:theme="?attr/actionBarTheme" />
+    <TextView
+        android:id="@+id/nameavatar_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="NOM VOISIN"
+        android:textColor="@android:color/white"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/avatar_img"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintLeft_toLeftOf="@id/avatar_img"
+         android:layout_marginStart="50dp"/>
 
-        <TextView
-            android:id="@+id/nameavatar_txt"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="225dp"
-            android:background="@color/colorAccent"
-            android:text="NOM VOISIN" />
-
-
-        <android.support.design.widget.FloatingActionButton
-            android:id="@+id/fav_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="10dp"
-            android:clickable="true"
-            android:focusable="true"
-            app:fabSize="normal"
-            app:layout_anchor="@id/avatar_img"
-            app:layout_anchorGravity="bottom|right|end"
-            app:srcCompat="@drawable/ic_star_border_white_24dp" />
-
-
-    </android.support.design.widget.CoordinatorLayout>
-
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fav_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:focusable="true"
+        android:layout_marginRight="15dp"
+        android:src="@drawable/ic_star_border_white_24dp"
+        app:layout_constraintBottom_toBottomOf="@id/avatar_img"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/avatar_img" />
 
     <android.support.v7.widget.CardView
         android:id="@+id/cardview1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="15dp">
+        android:layout_margin="15dp"
+        app:layout_constraintTop_toBottomOf="@id/avatar_img">
 
         <LinearLayout
-            android:id="@+id/linearlayout_infos"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
@@ -109,16 +107,17 @@
                 android:textSize="15sp" />
 
         </LinearLayout>
+
     </android.support.v7.widget.CardView>
 
     <android.support.v7.widget.CardView
         android:id="@+id/cardview2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="15dp">
+        android:layout_margin="15dp"
+        app:layout_constraintTop_toBottomOf="@id/cardview1">
 
         <LinearLayout
-            android:id="@+id/linearlayout_aboutme"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
@@ -127,11 +126,10 @@
                 android:id="@+id/aboutme_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingLeft="10dp"
-                android:paddingTop="10dp"
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:paddingTop="@dimen/activity_vertical_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin"
                 android:paddingBottom="10dp"
-                android:text="BONJOUR"
-                android:textColor="@color/black"
                 android:textSize="25sp"
                 android:textStyle="bold" />
 
@@ -143,7 +141,8 @@
                 android:paddingTop="@dimen/activity_vertical_margin"
                 android:paddingRight="@dimen/activity_horizontal_margin"
                 android:paddingBottom="10dp" />
-        </LinearLayout>
-    </android.support.v7.widget.CardView>
 
-</LinearLayout>
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+</android.support.constraint.ConstraintLayout>

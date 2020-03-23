@@ -7,26 +7,50 @@ import java.util.Objects;
  */
 public class Neighbour {
 
-    /** Identifier */
+    /**
+     * Identifier
+     */
     private long id;
 
-    /** Full name */
+    /**
+     * Full name
+     */
     private String name;
 
-    /** Avatar */
+    /**
+     * Avatar
+     */
     private String avatarUrl;
 
-    /** Adress */
+    /**
+     * Adress
+     */
     private String address;
 
-    /** Phone number */
+    /**
+     * Phone number
+     */
     private String phoneNumber;
 
-    /** About me */
+    /**
+     * Social
+     */
+    private String social;
+
+    /**
+     * About me
+     */
     private String aboutMe;
 
     /**
+     * About me text
+     */
+    private String aboutMeText;
+
+
+    /**
      * Constructor
+     *
      * @param id
      * @param name
      * @param avatarUrl
@@ -38,7 +62,9 @@ public class Neighbour {
         this.avatarUrl = avatarUrl;
         this.address = address;
         this.phoneNumber = phoneNumber;
+        //this.social = social;
         this.aboutMe = aboutMe;
+        //this.aboutMeText = aboutMeText;
     }
 
     public long getId() {
@@ -81,6 +107,14 @@ public class Neighbour {
         this.phoneNumber = phoneNumber;
     }
 
+   // public String getSocial() {
+        //return social;
+    //}
+
+   // public void setSocial(String social) {
+        //this.social = social;
+    //}
+
     public String getAboutMe() {
         return aboutMe;
     }
@@ -88,6 +122,14 @@ public class Neighbour {
     public void setAboutMe(String aboutMe) {
         this.aboutMe = aboutMe;
     }
+
+    //public String getAboutMeText() {
+    //    return aboutMeText;
+   // }
+
+    //public void setAboutMeText(String aboutMeText) {
+    //    this.aboutMeText = aboutMeText;
+   // }
 
     @Override
     public boolean equals(Object o) {
