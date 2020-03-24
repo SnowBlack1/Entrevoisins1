@@ -79,19 +79,20 @@ public class AddNeighbourActivity extends AppCompatActivity {
 
     }
 
-    @OnClick(R.id.create)
-    void addNeighbour() {
-        Neighbour neighbour = new Neighbour(
-                System.currentTimeMillis(),
-                nameInput.getEditText().getText().toString(),
-                mNeighbourImage,
-                addressInput.getEditText().getText().toString(),
-                phoneInput.getEditText().getText().toString(),
-                aboutMeInput.getEditText().getText().toString()
-        );
-        mApiService.createNeighbour(neighbour);
-        finish();
-    }
+    //@OnClick(R.id.create)
+    //void addNeighbour() {
+    //    Neighbour neighbour = new Neighbour(
+    //            System.currentTimeMillis(),
+    //            nameInput.getEditText().getText().toString(),
+    //            mNeighbourImage,
+    //            addressInput.getEditText().getText().toString(),
+    //            phoneInput.getEditText().getText().toString(),
+//
+    //            aboutMeInput.getEditText().getText().toString()
+    //    );
+    //    mApiService.createNeighbour(neighbour);
+    //    finish();
+    //}
 
     /**
      * Generate a random image. Useful to mock image picker
