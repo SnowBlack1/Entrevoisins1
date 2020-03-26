@@ -1,6 +1,7 @@
 package com.openclassrooms.entrevoisins.ui.neighbour_list;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -21,6 +22,7 @@ import com.openclassrooms.entrevoisins.service.NeighbourApiService;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -28,11 +30,12 @@ import java.util.List;
  */
 public class FavNeighbourFragment extends Fragment {
     private NeighbourApiService mApiService;
-    private List<Neighbour> mNeighbours;
+    private List<Neighbour> mFavoriteNeighbours;
     private RecyclerView mRecyclerView;
 
 
-    public static FavNeighbourFragment  newInstance() {
+    //Create & return a new instance of the fragment
+    public static FavNeighbourFragment newInstance() {
         FavNeighbourFragment fragment = new FavNeighbourFragment();
         return fragment;
     }
@@ -50,39 +53,64 @@ public class FavNeighbourFragment extends Fragment {
         Context context = view.getContext();
         mRecyclerView = (RecyclerView) view;
         mRecyclerView.setLayoutManager(new LinearLayoutManager(context));
-        initList();
+        //initList();
+
+        initFavoriteList();
+
         return view;
     }
 
-    /**
-     * Init the List of neighbours
-     */
-    private void initList() {
-        mNeighbours = mApiService.getFav();
-        mRecyclerView.setAdapter(new NeighbourRecyclerViewAdapter(mNeighbours));
+    private void initFavoriteList() {
+        SharedPreferences mPreferences = getContext().getSharedPreferences("SharedPref",Context.MODE_PRIVATE);
+        mPreferences.getAll();
+
+        mFavoriteNeighbours = new ArrayList<>();
+
+        if (mPreferences.getAll().isEmpty()) {
+        } else {
+            for (String s : mPreferences.getAll().keySet()) {
+                for (Neighbour n : mApiService.getNeighbours())
+                    if (n.getId() == Integer.parseInt(s)) {
+                        mFavoriteNeighbours.add(n);
+                    }
+            }
+        }
+
+        if (mFavoriteNeighbours == null) {
+        } else {
+            mRecyclerView.setAdapter(new NeighbourRecyclerViewAdapter(mFavoriteNeighbours));
+        }
+
     }
 
-    //@Override
-    //public void onStart() {
-    //    super.onStart();
-    //    EventBus.getDefault().register(this);
-    //    initList();
-    //}
-//
-    //@Override
-    //public void onStop() {
-    //    super.onStop();
-    //    EventBus.getDefault().unregister(this);
-    //}
-//
-    ///**
-    // * Fired if the user clicks on a delete button
-    // * @param event
-    // */
-    //@Subscribe
-    //public void onDeleteNeighbour(DeleteNeighbourEvent event) {
-    //    mApiService.deleteFavNeighbour(event.neighbour);
-    //    mApiService.deleteNeighbour(event.neighbour);
-    //    initList();
-    //}
+    // Refreshing view when user uses app
+    @Override
+    public void onResume() {
+        super.onResume();
+        initFavoriteList();
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        EventBus.getDefault().register(this);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        EventBus.getDefault().unregister(this);
+    }
+
+    /**
+     * Fired if the user clicks on a delete button
+     *
+     * @param event
+     */
+    @Subscribe
+    public void onDeleteNeighbour(DeleteNeighbourEvent event) {
+        mApiService.deleteFavNeighbour(event.neighbour);
+        mApiService.deleteNeighbour(event.neighbour);
+        initFavoriteList();
+    }
 }

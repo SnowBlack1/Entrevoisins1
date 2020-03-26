@@ -1,6 +1,7 @@
 package com.openclassrooms.entrevoisins.ui.neighbour_list;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,6 +16,8 @@ import com.openclassrooms.entrevoisins.model.Neighbour;
 import com.openclassrooms.entrevoisins.service.NeighbourApiService;
 
 public class SpecificNeighbour extends AppCompatActivity {
+
+    private Neighbour specificNeighbour;
 
     private ImageView avatarImg;
     private TextView nameAvatar;
@@ -39,36 +42,32 @@ public class SpecificNeighbour extends AppCompatActivity {
 
         avatarImg = findViewById(R.id.avatar_img);
         //Glide.with(this)
-                //.load(neighbour.getAvatarUrl())
-                //.into(avatarImg);
+        //.load(neighbour.getAvatarUrl())
+        //.into(avatarImg);
 
-            toolbar = findViewById(R.id.toolbar);
-            setSupportActionBar(toolbar);
-            toolbar.setNavigationIcon(R.drawable.ic_back_arrow_24dp);
-            getSupportActionBar().setTitle(null);
-            toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+        toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        toolbar.setNavigationIcon(R.drawable.ic_back_arrow_24dp);
+        getSupportActionBar().setTitle(null);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 finish();
             }
         });
 
-        //public void Back_to_former_page() {
-        //   mBackArrow.setOnClickListener(v -> onBackPressed());
-        //
+        displayFavorite();
+        favoriteButtonClick();
+
 
         favBtn = findViewById(R.id.fav_btn);
-        if (neighbourService.getFav().contains(neighbour)) {
-            favBtn.setImageResource(R.drawable.ic_star_white_24dp);
-        } else {
-            favBtn.setImageResource(R.drawable.ic_star_border_white_24dp);
-        }
+
 
         nameAvatar = findViewById(R.id.nameavatar_txt);
-        //nameAvatar.setText(neighbour.getName());
+        nameAvatar.setText(neighbour.getName());
 
         nameTitle = findViewById(R.id.name1_txt);
-       // nameTitle.setText(neighbour.getName());
+        // nameTitle.setText(neighbour.getName());
 
         adress = findViewById(R.id.address_txt);
         //adress.setText(neighbour.getAddress());
@@ -84,6 +83,33 @@ public class SpecificNeighbour extends AppCompatActivity {
 
         aboutMeText = findViewById(R.id.aboutme_txt);
         //aboutMeText.setText(neighbour.getAboutMeText());
+    }
+
+    private void displayFavorite() {
+        SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", MODE_PRIVATE);
+
+        if (pref.contains(specificNeighbour.getId().toString())) {
+            favBtn.setImageResource(R.drawable.ic_star_white_24dp);
+        } else {
+            favBtn.setImageResource(R.drawable.ic_star_border_white_24dp);
+        }
+    }
+
+    private void favoriteButtonClick() {
+        favBtn.setOnClickListener(view -> {
+            SharedPreferences mPref = getApplicationContext().getSharedPreferences("mPref",MODE_PRIVATE);
+            SharedPreferences.Editor editor = mPref.edit();
+
+            if (mPref.contains(specificNeighbour.getId().toString())) {
+                editor.remove(specificNeighbour.getId().toString()); // will delete key name
+                editor.apply();
+
+            } else {
+                editor.putBoolean(specificNeighbour.getId().toString(), true); // Storing boolean - true/false
+                editor.apply();
+            }
+            displayFavorite();
+        });
     }
 
 }

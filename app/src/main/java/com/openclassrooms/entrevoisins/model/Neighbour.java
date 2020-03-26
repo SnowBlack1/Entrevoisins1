@@ -7,19 +7,13 @@ import java.util.Objects;
  */
 public class Neighbour {
 
-    /**
-     * Identifier
-     */
-    private long id;
+    /** Identifier */
+    private Integer id;
 
-    /**
-     * Full name
-     */
+    /** Full name */
     private String name;
 
-    /**
-     * Avatar
-     */
+    /** Avatar */
     private String avatarUrl;
 
     /**
@@ -55,7 +49,7 @@ public class Neighbour {
      * @param name
      * @param avatarUrl
      */
-    public Neighbour(long id, String name, String avatarUrl, String address,
+    public Neighbour(Integer id, String name, String avatarUrl, String address,
                      String phoneNumber, String social, String aboutMe, String aboutMeText) {
         this.id = id;
         this.name = name;
@@ -67,11 +61,11 @@ public class Neighbour {
         this.aboutMeText = aboutMeText;
     }
 
-    public long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
