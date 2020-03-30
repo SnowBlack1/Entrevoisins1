@@ -22,6 +22,8 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+import static com.openclassrooms.entrevoisins.Utils.Constants.NEIGHBOUR_KEY;
+
 public class NeighbourRecyclerViewAdapter extends RecyclerView.Adapter<NeighbourRecyclerViewAdapter.ViewHolder> {
 
     private final List<Neighbour> mNeighbours;
@@ -53,10 +55,12 @@ public class NeighbourRecyclerViewAdapter extends RecyclerView.Adapter<Neighbour
             }
         });
         
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
+        holder.itemView.setOnClickListener(new View.OnClickListener() { //EventBus.getDefault().post(new ClickOnNeighbourEvent(neighbour));
+            //mettre contenu méthode dans classe CLICKONNEIGHBOUREVENT
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(),SpecificNeighbour.class);
+                intent.putExtra(NEIGHBOUR_KEY, neighbour);
                 v.getContext().startActivity(intent);
             }
         });

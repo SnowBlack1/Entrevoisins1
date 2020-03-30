@@ -41,14 +41,6 @@ public class DummyNeighbourApiService implements NeighbourApiService {
     }
 
     /**
-     * Get favorite neighbour
-     */
-   // @Override
-   // public List<Neighbour> getFav() {
-     //   return favNeighbour;
-   // }
-
-    /**
      * Delete favorite neighbour
      */
     @Override
@@ -57,12 +49,4 @@ public class DummyNeighbourApiService implements NeighbourApiService {
 
    }
 
-    /**
-     * Add favorite neighbour
-     */
-    //@Override
-    //public void addFavNeighbour(Neighbour neighbour) {
-    //    favNeighbour.add(neighbour);
-//
-    //}
 }

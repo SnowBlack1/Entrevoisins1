@@ -53,7 +53,6 @@ public class FavNeighbourFragment extends Fragment {
         Context context = view.getContext();
         mRecyclerView = (RecyclerView) view;
         mRecyclerView.setLayoutManager(new LinearLayoutManager(context));
-        //initList();
 
         initFavoriteList();
 
