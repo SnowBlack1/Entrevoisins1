@@ -80,11 +80,26 @@ public class SpecificNeighbour extends AppCompatActivity {
                 }
             });
 
-            //displayFavNeighbour();
-            //favoriteButtonClick();
+            favBtn = findViewById(R.id.fav_btn);
+            if (neighbourService.getFav().contains(neighbour)) {
+                favBtn.setImageResource(R.drawable.ic_star_white_24dp);
+            } else {
+                favBtn.setImageResource(R.drawable.ic_star_border_white_24dp);
+            }
 
+            favBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (neighbourService.getFav().contains(neighbour)) {
+                        neighbourService.deleteFavNeighbour(neighbour);
+                        favBtn.setImageResource(R.drawable.ic_star_border_white_24dp);
+                    } else {
+                        neighbourService.addFavNeighbour(neighbour);
+                        favBtn.setImageResource(R.drawable.ic_star_white_24dp);
+                    }
+                }
+            });
 
-            //favBtn = findViewById(R.id.fav_btn);
 
             nameAvatar = findViewById(R.id.nameavatar_txt);
             nameAvatar.setText(neighbour.getName());
@@ -108,33 +123,5 @@ public class SpecificNeighbour extends AppCompatActivity {
             aboutMeText.setText(neighbour.getAboutMeText());
         }
     }
-
-   // private void displayFavNeighbour() {
-   //
-   //     SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", MODE_PRIVATE);
-//
-   //     if (pref.contains(specificNeighbour.getId().toString())) {
-   //         favBtn.setImageResource(R.drawable.ic_star_white_24dp);
-   //     } else {
-   //         favBtn.setImageResource(R.drawable.ic_star_border_white_24dp);
-   //     }
-   // }
-
-   //private void favoriteButtonClick() {
-   //    favBtn.setOnClickListener(view -> {
-   //        SharedPreferences mPref = getApplicationContext().getSharedPreferences("mPref", MODE_PRIVATE);
-   //        SharedPreferences.Editor editor = mPref.edit();
-
-   //        if (mPref.contains(specificNeighbour.getId().toString())) {
-   //            editor.remove(specificNeighbour.getId().toString()); // will delete key name
-   //            editor.apply();
-
-   //        } else {
-   //            editor.putBoolean(specificNeighbour.getId().toString(), true); // Storing boolean - true/false
-   //            editor.apply();
-   //        }
-   //        displayFavNeighbour();
-   //    });
-   //}
 
 }

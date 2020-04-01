@@ -40,13 +40,23 @@ public class DummyNeighbourApiService implements NeighbourApiService {
         neighbours.add(neighbour);
     }
 
-    /**
-     * Delete favorite neighbour
-     */
+    /** Delete favorite neighbour */
     @Override
    public void deleteFavNeighbour(Neighbour neighbour) {
        favNeighbour.remove(neighbour);
+   }
 
+   /** Get favorite neighbour */
+   @Override
+    public List<Neighbour> getFav(){
+       return favNeighbour;
+   }
+
+
+    /** Add favorite neighbour */
+   @Override
+   public void addFavNeighbour(Neighbour neighbour){
+       favNeighbour.add(neighbour);
    }
 
 }

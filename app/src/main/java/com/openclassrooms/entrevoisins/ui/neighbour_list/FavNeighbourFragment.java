@@ -54,45 +54,45 @@ public class FavNeighbourFragment extends Fragment {
         mRecyclerView = (RecyclerView) view;
         mRecyclerView.setLayoutManager(new LinearLayoutManager(context));
 
-        initFavoriteList();
+        initNeighbourList();
 
         return view;
     }
 
-    private void initFavoriteList() {
-        SharedPreferences mPreferences = getContext().getSharedPreferences("SharedPref",Context.MODE_PRIVATE);
-        mPreferences.getAll();
-
-        mFavoriteNeighbours = new ArrayList<>();
-
-        if (mPreferences.getAll().isEmpty()) {
-        } else {
-            for (String s : mPreferences.getAll().keySet()) {
-                for (Neighbour n : mApiService.getNeighbours())
-                    if (n.getId() == Integer.parseInt(s)) {
-                        mFavoriteNeighbours.add(n);
-                    }
-            }
-        }
-
-        if (mFavoriteNeighbours == null) {
-        } else {
-            mRecyclerView.setAdapter(new NeighbourRecyclerViewAdapter(mFavoriteNeighbours));
-        }
-
+    private void initNeighbourList(){
+        mFavoriteNeighbours = mApiService.getFav();
+        mRecyclerView.setAdapter(new NeighbourRecyclerViewAdapter(mFavoriteNeighbours) {
+        });
     }
 
-    // Refreshing view when user uses app
-    @Override
-    public void onResume() {
-        super.onResume();
-        initFavoriteList();
-    }
+    //private void initFavoriteList() {
+    //    SharedPreferences mPreferences = getContext().getSharedPreferences("SharedPref",Context.MODE_PRIVATE);
+    //    mPreferences.getAll();
+//
+    //    mFavoriteNeighbours = new ArrayList<>();
+//
+    //    if (mPreferences.getAll().isEmpty()) {
+    //    } else {
+    //        for (String s : mPreferences.getAll().keySet()) {
+    //            for (Neighbour n : mApiService.getNeighbours())
+    //                if (n.getId() == Integer.parseInt(s)) {
+    //                    mFavoriteNeighbours.add(n);
+    //                }
+    //        }
+    //    }
+//
+    //    if (mFavoriteNeighbours == null) {
+    //    } else {
+    //        mRecyclerView.setAdapter(new NeighbourRecyclerViewAdapter(mFavoriteNeighbours));
+    //    }
+//
+    //}
 
     @Override
     public void onStart() {
         super.onStart();
         EventBus.getDefault().register(this);
+        initNeighbourList();
     }
 
     @Override
@@ -110,6 +110,6 @@ public class FavNeighbourFragment extends Fragment {
     public void onDeleteNeighbour(DeleteNeighbourEvent event) {
         mApiService.deleteFavNeighbour(event.neighbour);
         mApiService.deleteNeighbour(event.neighbour);
-        initFavoriteList();
+        initNeighbourList();
     }
 }
