@@ -10,11 +10,13 @@ import static com.openclassrooms.entrevoisins.Utils.Constants.NEIGHBOUR_KEY;
 public class ClickOnNeighbourEvent {
 
     public Neighbour neighbour;
-    private View v;
 
-    public ClickOnNeighbourEvent(Neighbour neighbour) {
-       // this.neighbour = neighbour;
+    public ClickOnNeighbourEvent(Neighbour neighbour, View v) {
+        Intent intent = new Intent(v.getContext(), SpecificNeighbour.class);
+        intent.putExtra(NEIGHBOUR_KEY, neighbour);
+        v.getContext().startActivity(intent);
     }
+
 
 }
 

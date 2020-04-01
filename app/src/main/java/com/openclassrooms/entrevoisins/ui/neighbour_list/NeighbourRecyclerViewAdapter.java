@@ -59,10 +59,10 @@ public class NeighbourRecyclerViewAdapter extends RecyclerView.Adapter<Neighbour
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //EventBus.getDefault().post(new ClickOnNeighbourEvent(neighbour));
-                Intent intent = new Intent(v.getContext(), SpecificNeighbour.class);
-                intent.putExtra(NEIGHBOUR_KEY, neighbour);
-                v.getContext().startActivity(intent);
+                EventBus.getDefault().post(new ClickOnNeighbourEvent(neighbour,v));
+                //Intent intent = new Intent(v.getContext(), SpecificNeighbour.class);
+                //intent.putExtra(NEIGHBOUR_KEY, neighbour);
+                //v.getContext().startActivity(intent);
             }
         });
     }
