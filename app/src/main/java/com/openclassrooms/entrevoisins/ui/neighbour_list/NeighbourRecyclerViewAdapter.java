@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.openclassrooms.entrevoisins.R;
+import com.openclassrooms.entrevoisins.events.ClickOnNeighbourEvent;
 import com.openclassrooms.entrevoisins.events.DeleteNeighbourEvent;
 import com.openclassrooms.entrevoisins.model.Neighbour;
 
@@ -55,11 +56,11 @@ public class NeighbourRecyclerViewAdapter extends RecyclerView.Adapter<Neighbour
             }
         });
         
-        holder.itemView.setOnClickListener(new View.OnClickListener() { //EventBus.getDefault().post(new ClickOnNeighbourEvent(neighbour));
-            //mettre contenu méthode dans classe CLICKONNEIGHBOUREVENT
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(),SpecificNeighbour.class);
+                //EventBus.getDefault().post(new ClickOnNeighbourEvent(neighbour));
+                Intent intent = new Intent(v.getContext(), SpecificNeighbour.class);
                 intent.putExtra(NEIGHBOUR_KEY, neighbour);
                 v.getContext().startActivity(intent);
             }

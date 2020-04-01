@@ -54,45 +54,23 @@ public class FavNeighbourFragment extends Fragment {
         mRecyclerView = (RecyclerView) view;
         mRecyclerView.setLayoutManager(new LinearLayoutManager(context));
 
-        initNeighbourList();
+        initFavNeighbourList();
 
         return view;
     }
 
-    private void initNeighbourList(){
+    private void initFavNeighbourList(){
         mFavoriteNeighbours = mApiService.getFav();
         mRecyclerView.setAdapter(new NeighbourRecyclerViewAdapter(mFavoriteNeighbours) {
         });
     }
 
-    //private void initFavoriteList() {
-    //    SharedPreferences mPreferences = getContext().getSharedPreferences("SharedPref",Context.MODE_PRIVATE);
-    //    mPreferences.getAll();
-//
-    //    mFavoriteNeighbours = new ArrayList<>();
-//
-    //    if (mPreferences.getAll().isEmpty()) {
-    //    } else {
-    //        for (String s : mPreferences.getAll().keySet()) {
-    //            for (Neighbour n : mApiService.getNeighbours())
-    //                if (n.getId() == Integer.parseInt(s)) {
-    //                    mFavoriteNeighbours.add(n);
-    //                }
-    //        }
-    //    }
-//
-    //    if (mFavoriteNeighbours == null) {
-    //    } else {
-    //        mRecyclerView.setAdapter(new NeighbourRecyclerViewAdapter(mFavoriteNeighbours));
-    //    }
-//
-    //}
 
     @Override
     public void onStart() {
         super.onStart();
         EventBus.getDefault().register(this);
-        initNeighbourList();
+        initFavNeighbourList();
     }
 
     @Override
@@ -110,6 +88,6 @@ public class FavNeighbourFragment extends Fragment {
     public void onDeleteNeighbour(DeleteNeighbourEvent event) {
         mApiService.deleteFavNeighbour(event.neighbour);
         mApiService.deleteNeighbour(event.neighbour);
-        initNeighbourList();
+        initFavNeighbourList();
     }
 }
