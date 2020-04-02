@@ -31,8 +31,8 @@ public class ListNeighboursFragment extends Fragment {
     private NeighbourApiService mApiService;
     private List<Neighbour> mNeighbours;
     private RecyclerView mRecyclerView;
-    private View v;
-    private Neighbour neighbour;
+
+
 
 
     /**
@@ -99,8 +99,8 @@ public class ListNeighboursFragment extends Fragment {
 
     //@Subscribe
     //public void ClickOnNeighbourEvent(ClickOnNeighbourEvent event){
-        //Intent intent = new Intent(v.getContext(), SpecificNeighbour.class);
-       // intent.putExtra(NEIGHBOUR_KEY, neighbour);
-        //v.getContext().startActivity(intent);
+    //    Intent intent = new Intent(v.getContext(), SpecificNeighbour.class);
+    //    intent.putExtra(NEIGHBOUR_KEY, neighbour);
+    //    v.getContext().startActivity(intent);
     //}
 }
