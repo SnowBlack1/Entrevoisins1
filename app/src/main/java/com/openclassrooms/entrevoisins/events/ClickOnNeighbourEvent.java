@@ -11,10 +11,11 @@ public class ClickOnNeighbourEvent {
 
     public Neighbour neighbour;
 
-    public ClickOnNeighbourEvent(Neighbour neighbour, View v) {
-        Intent intent = new Intent(v.getContext(), SpecificNeighbour.class);
-        intent.putExtra(NEIGHBOUR_KEY, neighbour);
-        v.getContext().startActivity(intent);
+    public ClickOnNeighbourEvent(Neighbour neighbour) {
+        this.neighbour = neighbour;
+        //Intent intent = new Intent(v.getContext(), SpecificNeighbour.class);
+        //intent.putExtra(NEIGHBOUR_KEY, neighbour);
+        //v.getContext().startActivity(intent); //mettre View v en param méthode
     }
 
 

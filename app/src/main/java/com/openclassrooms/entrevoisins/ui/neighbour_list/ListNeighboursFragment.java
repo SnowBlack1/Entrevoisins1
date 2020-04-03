@@ -97,10 +97,10 @@ public class ListNeighboursFragment extends Fragment {
         initList();
     }
 
-    //@Subscribe
-    //public void ClickOnNeighbourEvent(ClickOnNeighbourEvent event){
-    //    Intent intent = new Intent(v.getContext(), SpecificNeighbour.class);
-    //    intent.putExtra(NEIGHBOUR_KEY, neighbour);
-    //    v.getContext().startActivity(intent);
-    //}
+    @Subscribe
+    public void ClickOnNeighbourEvent(ClickOnNeighbourEvent event){
+        Intent specificNeighbourIntent = new Intent(getContext(),SpecificNeighbour.class);
+        specificNeighbourIntent.putExtra(NEIGHBOUR_KEY,event.neighbour);
+        startActivity(specificNeighbourIntent);
+    }
 }
