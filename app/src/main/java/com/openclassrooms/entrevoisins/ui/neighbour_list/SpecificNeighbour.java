@@ -70,12 +70,13 @@ public class SpecificNeighbour extends AppCompatActivity {
 
             toolbar = findViewById(R.id.toolbar);
             setSupportActionBar(toolbar);
-            toolbar.setNavigationIcon(R.drawable.ic_back_arrow_24dp);
+            toolbar.setNavigationIcon(R.drawable.ic_blue_back_arrow);
             getSupportActionBar().setTitle(null);
             toolbar.setNavigationOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    finish();
+                    onBackPressed();
+                    //finish();
                 }
             });
 
@@ -121,13 +122,12 @@ public class SpecificNeighbour extends AppCompatActivity {
             aboutMeText = findViewById(R.id.aboutme_txt);
             aboutMeText.setText(neighbour.getAboutMeText());
 
-            //onBackPressed();
         }
     }
 
-    //public void onBackPressed() {
-    //    super.onBackPressed();
-//
+    public void onBackPressed() {
+        super.onBackPressed();
+
     //    //If neighbour is already favorite & if we click on favBtn -> deleteFavNeighbour
     //    if (neighbourService.getFav().contains(neighbour)) {
     //        neighbourService.deleteFavNeighbour(neighbour);
@@ -137,6 +137,6 @@ public class SpecificNeighbour extends AppCompatActivity {
     //        neighbourService.addFavNeighbour(neighbour);
     //        //favBtn.setImageResource(R.drawable.ic_star_white_24dp);
     //    }
-    //}
+    }
 }
 
