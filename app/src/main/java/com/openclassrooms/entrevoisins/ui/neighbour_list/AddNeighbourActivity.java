@@ -11,6 +11,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.MenuItem;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
@@ -35,6 +36,8 @@ public class AddNeighbourActivity extends AppCompatActivity {
     TextInputLayout addressInput;
     @BindView(R.id.aboutMeLyt)
     TextInputLayout aboutMeInput;
+    String aboutMeTxt;
+    String social;
     @BindView(R.id.create)
     MaterialButton addButton;
 
@@ -79,20 +82,20 @@ public class AddNeighbourActivity extends AppCompatActivity {
 
     }
 
-    //@OnClick(R.id.create)
-    //void addNeighbour() {
-    //    Neighbour neighbour = new Neighbour(
-    //            System.currentTimeMillis(),
-    //            nameInput.getEditText().getText().toString(),
-    //            mNeighbourImage,
-    //            addressInput.getEditText().getText().toString(),
-    //            phoneInput.getEditText().getText().toString(),
-//
-    //            aboutMeInput.getEditText().getText().toString()
-    //    );
-    //    mApiService.createNeighbour(neighbour);
-    //    finish();
-    //}
+    @OnClick(R.id.create)
+    void addNeighbour() {
+        Neighbour neighbour = new Neighbour(
+               System.currentTimeMillis(),
+                nameInput.getEditText().getText().toString(),
+                mNeighbourImage,
+                addressInput.getEditText().getText().toString(),
+                phoneInput.getEditText().getText().toString(),
+                social,
+                aboutMeInput.getEditText().getText().toString(),
+                aboutMeTxt);
+        mApiService.createNeighbour(neighbour);
+        finish();
+   }
 
     /**
      * Generate a random image. Useful to mock image picker

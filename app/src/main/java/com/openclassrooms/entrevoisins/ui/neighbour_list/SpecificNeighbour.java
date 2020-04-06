@@ -49,7 +49,7 @@ public class SpecificNeighbour extends AppCompatActivity {
         neighbourService = DI.getNeighbourApiService();
 
         specificNeighbour = new Neighbour(
-                this.getIntent().getExtras().getInt(NEIGHBOUR_ID_KEY),
+                this.getIntent().getExtras().getLong(NEIGHBOUR_ID_KEY),
                 this.getIntent().getExtras().getString(NEIGHBOUR_NAME_KEY),
                 this.getIntent().getExtras().getString(NEIGHBOUR_AVATAR_URL_KEY),
                 this.getIntent().getExtras().getString(NEIGHBOUR_ADRESS_KEY),
@@ -126,17 +126,17 @@ public class SpecificNeighbour extends AppCompatActivity {
     }
 
     public void onBackPressed() {
+       ////If neighbour is already favorite & if we click on favBtn -> deleteFavNeighbour
+//
+       // if (neighbourService.getFav().contains(neighbour)) {
+       //   neighbourService.deleteFavNeighbour(neighbour);
+       //    favBtn.setImageResource(R.drawable.ic_star_border_white_24dp);
+       // } else {
+       //    // Neighbour is not yet favorite, addFavNeighbour
+       //     neighbourService.addFavNeighbour(neighbour);
+       //     favBtn.setImageResource(R.drawable.ic_star_white_24dp);
+       //}
         super.onBackPressed();
-
-    //    //If neighbour is already favorite & if we click on favBtn -> deleteFavNeighbour
-    //    if (neighbourService.getFav().contains(neighbour)) {
-    //        neighbourService.deleteFavNeighbour(neighbour);
-    //        //favBtn.setImageResource(R.drawable.ic_star_border_white_24dp);
-    //    } else {
-    //        // Neighbour is not yet favorite, addFavNeighbour
-    //        neighbourService.addFavNeighbour(neighbour);
-    //        //favBtn.setImageResource(R.drawable.ic_star_white_24dp);
-    //    }
     }
 }
 
