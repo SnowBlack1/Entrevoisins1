@@ -9,8 +9,14 @@ import java.util.List;
 public abstract class DummyNeighbourGenerator {
 
     public static List<Neighbour> DUMMY_NEIGHBOURS = Arrays.asList(
+
+            //For Caroline's aboutMeTxt, it's a text in order to test ScrollView
             new Neighbour((long) 1, "Caroline", "https://i.pravatar.cc/300?u=a042581f4e29026704d", "Saint-Pierre-du-Mont, 5km", "+33 6 86 57 90 14", "www.facebook.fr/Caroline",
-                    "A propos de moi", "Bonjour !Je souhaiterais faire de la marche nordique. Pas initiée, je recherche une ou plusieurs personnes susceptibles de m'accompagner ! J'aime les jeux de cartes tels la belote et le tarot.."),
+                    "A propos de moi","Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, " +
+                    "quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. " +
+                    "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. " +
+                    "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur." +
+                    " Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\" "),
 
             new Neighbour((long) 2, "Jack", "https://i.pravatar.cc/300?u=a042581f4e29026704e", "Saint-Pierre-du-Mont ; 5km", "+33 6 86 57 90 14", "www.facebook.fr/Jack",
                     "A propos de moi", "Bonjour !Je souhaiterais faire de la marche nordique. Pas initié, je recherche une ou plusieurs personnes susceptibles de m'accompagner ! J'aime les jeux de cartes tels la belote et le tarot.."),
