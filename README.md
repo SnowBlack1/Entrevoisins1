@@ -21,7 +21,9 @@ Pour lancer l'application, il vous faudra un émulateur Android, ou bien un équ
 # Fonctionnalités de l'application présentes avant modification
 
 -Lister les voisins
+
 -Ajouter un voisin
+
 -Suppression d'un voisin
 
 # Fonctionnalités ajoutées par la suite
@@ -29,8 +31,12 @@ Pour lancer l'application, il vous faudra un émulateur Android, ou bien un équ
 Au clic sur un voisin, nouvel écran avec :
 
 -Un bouton de retour à l'écran précédent
+
 -L'avatar du voisin
+
 -Le nom du voisin
+
 -Un bouton d'ajout du voisin à la liste des favoris
+
 -Un onglet Favoris dans lequel les voisins marqués comme tel s'affichent.
 
