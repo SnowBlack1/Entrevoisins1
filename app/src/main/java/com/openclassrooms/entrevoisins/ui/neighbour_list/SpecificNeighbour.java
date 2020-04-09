@@ -95,7 +95,7 @@ public class SpecificNeighbour extends AppCompatActivity {
                         neighbourService.deleteFavNeighbour(neighbour);
                         favBtn.setImageResource(R.drawable.ic_star_border_white_24dp);
                     } else {
-                        neighbourService.addFavNeighbour(neighbour);
+                        neighbourService.addFav(neighbour);
                         favBtn.setImageResource(R.drawable.ic_star_white_24dp);
                     }
                 }

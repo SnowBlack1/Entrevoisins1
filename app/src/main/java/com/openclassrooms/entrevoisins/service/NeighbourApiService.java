@@ -28,13 +28,19 @@ public interface NeighbourApiService {
      */
     void createNeighbour(Neighbour neighbour);
 
-    /** Delete favorite neighbour */
+    /**
+     * Delete favorite neighbour
+     *@param neighbour
+     * */
+
     void deleteFavNeighbour(Neighbour neighbour);
 
-    /** Get favorite neighbour */
+    /** Get favorite neighbour*/
      List<Neighbour> getFav();
 
-    /** Add favorite neighbour */
-    void addFavNeighbour(Neighbour neighbour);
+    /** Add favorite neighbour
+     * @param neighbour*/
+
+    void addFav(Neighbour neighbour);
 
 }
