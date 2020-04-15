@@ -32,11 +32,9 @@ public class ListNeighboursFragment extends Fragment {
     private List<Neighbour> mNeighbours;
     private RecyclerView mRecyclerView;
 
-
-
-
     /**
      * Create and return a new instance
+     *
      * @return @{@link ListNeighboursFragment}
      */
     public static ListNeighboursFragment newInstance() {
@@ -89,6 +87,7 @@ public class ListNeighboursFragment extends Fragment {
 
     /**
      * Fired if the user clicks on a delete button
+     *
      * @param event
      */
     @Subscribe
@@ -98,9 +97,9 @@ public class ListNeighboursFragment extends Fragment {
     }
 
     @Subscribe
-    public void ClickOnNeighbourEvent(ClickOnNeighbourEvent event){
-        Intent specificNeighbourIntent = new Intent(getContext(),SpecificNeighbour.class);
-        specificNeighbourIntent.putExtra(NEIGHBOUR_KEY,event.neighbour);
+    public void ClickOnNeighbourEvent(ClickOnNeighbourEvent event) {
+        Intent specificNeighbourIntent = new Intent(getContext(), SpecificNeighbour.class);
+        specificNeighbourIntent.putExtra(NEIGHBOUR_KEY, event.neighbour);
         startActivity(specificNeighbourIntent);
     }
 }

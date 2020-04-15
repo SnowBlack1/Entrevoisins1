@@ -45,6 +45,7 @@ public class NeighboursListTest {
 
     // This is fixed
     private static int ITEMS_COUNT = 12;
+
     private static int POSITION = 0;
 
     private ListNeighbourActivity mActivity;

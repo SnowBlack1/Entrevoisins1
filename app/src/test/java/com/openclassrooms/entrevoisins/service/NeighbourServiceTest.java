@@ -45,6 +45,7 @@ public class NeighbourServiceTest {
 
     @Test
     public void getFavoritesWithSuccess() {
+        //Clear favorite list (via API)
         service.getFav().clear();
         Neighbour neighbour = new Neighbour((long) 1, "test", "test", "test",
                 "test", "test", "test", "test");

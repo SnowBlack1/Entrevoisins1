@@ -28,8 +28,6 @@ import static com.openclassrooms.entrevoisins.Utils.Constants.NEIGHBOUR_SOCIAL_K
 public class SpecificNeighbour extends AppCompatActivity {
 
     private Neighbour specificNeighbour;
-    private Neighbour neighbour;
-
     private ImageView avatarImg;
     private TextView nameAvatar;
     private TextView nameTitle;
@@ -76,18 +74,11 @@ public class SpecificNeighbour extends AppCompatActivity {
             toolbar.setNavigationOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    //onBackPressed();
                     finish();
                 }
             });
 
             favBtn = findViewById(R.id.fav_btn);
-            if (neighbourService.getFav().contains(neighbour)) {
-                favBtn.setImageResource(R.drawable.ic_star_white_24dp);
-            } else {
-                favBtn.setImageResource(R.drawable.ic_star_border_white_24dp);
-            }
-
             favBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -125,19 +116,5 @@ public class SpecificNeighbour extends AppCompatActivity {
 
         }
     }
-
-    public void onBackPressed() {
-       //If neighbour is already favorite & if we click on favBtn -> deleteFavNeighbour
-
-        //if (neighbourService.getFav().contains(neighbour)) {
-          //neighbourService.deleteFavNeighbour(neighbour);
-       // } else {
-            //Neighbour is not yet favorite, addFavNeighbour
-            //neighbourService.addFavNeighbour(neighbour);
-            //favBtn.setImageResource(R.drawable.ic_star_white_24dp);
-        //}
-        super.onBackPressed();
-    }
-
 }
 
