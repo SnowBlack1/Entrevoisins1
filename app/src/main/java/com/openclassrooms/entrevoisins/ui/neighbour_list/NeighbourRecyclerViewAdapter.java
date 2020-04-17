@@ -1,6 +1,5 @@
 package com.openclassrooms.entrevoisins.ui.neighbour_list;
 
-import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,7 +22,6 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-import static com.openclassrooms.entrevoisins.Utils.Constants.NEIGHBOUR_KEY;
 
 public class NeighbourRecyclerViewAdapter extends RecyclerView.Adapter<NeighbourRecyclerViewAdapter.ViewHolder> {
 
