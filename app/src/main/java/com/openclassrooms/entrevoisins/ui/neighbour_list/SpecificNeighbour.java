@@ -58,7 +58,7 @@ public class SpecificNeighbour extends AppCompatActivity {
 
             Toolbar toolbar = findViewById(R.id.toolbar);
             setSupportActionBar(toolbar);
-            toolbar.setNavigationIcon(R.drawable.ic_blue_back_arrow);
+            toolbar.setNavigationIcon(R.drawable.ic_back_arrow_24dp);
             getSupportActionBar().setTitle(null);
             toolbar.setNavigationOnClickListener(new View.OnClickListener() {
                 @Override
@@ -73,10 +73,10 @@ public class SpecificNeighbour extends AppCompatActivity {
                 public void onClick(View v) {
                     if (neighbourService.getFav().contains(neighbour)) {
                         neighbourService.deleteFavNeighbour(neighbour);
-                        favBtn.setImageResource(R.drawable.ic_star_border_white_24dp);
+                        favBtn.setImageResource(R.drawable.ic_empty_star_24dp);
                     } else {
                         neighbourService.addFav(neighbour);
-                        favBtn.setImageResource(R.drawable.ic_star_white_24dp);
+                        favBtn.setImageResource(R.drawable.ic_yellow_star_24dp);
                     }
                 }
             });
