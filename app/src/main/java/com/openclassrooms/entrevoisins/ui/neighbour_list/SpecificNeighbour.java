@@ -46,6 +46,7 @@ public class SpecificNeighbour extends AppCompatActivity {
     Neighbour neighbour;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
