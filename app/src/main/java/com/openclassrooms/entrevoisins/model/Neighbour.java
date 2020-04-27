@@ -8,13 +8,19 @@ import java.util.Objects;
  */
 public class Neighbour implements Serializable {
 
-    /** Identifier */
+    /**
+     * Identifier
+     */
     private Long id;
 
-    /** Full name */
+    /**
+     * Full name
+     */
     private String name;
 
-    /** Avatar */
+    /**
+     * Avatar
+     */
     private String avatarUrl;
 
     /**
@@ -37,11 +43,6 @@ public class Neighbour implements Serializable {
      */
     private String aboutMe;
 
-    /**
-     * About me text
-     */
-    private String aboutMeText;
-
 
     /**
      * Constructor
@@ -49,9 +50,13 @@ public class Neighbour implements Serializable {
      * @param id
      * @param name
      * @param avatarUrl
+     * @param address
+     * @param phoneNumber
+     * @param social
+     * @param aboutMe
      */
     public Neighbour(Long id, String name, String avatarUrl, String address,
-                     String phoneNumber, String social, String aboutMe, String aboutMeText) {
+                     String phoneNumber, String social, String aboutMe) {
         this.id = id;
         this.name = name;
         this.avatarUrl = avatarUrl;
@@ -59,7 +64,6 @@ public class Neighbour implements Serializable {
         this.phoneNumber = phoneNumber;
         this.social = social;
         this.aboutMe = aboutMe;
-        this.aboutMeText = aboutMeText;
     }
 
     public Long getId() {
@@ -118,13 +122,6 @@ public class Neighbour implements Serializable {
         this.aboutMe = aboutMe;
     }
 
-    public String getAboutMeText() {
-        return aboutMeText;
-    }
-
-    public void setAboutMeText(String aboutMeText) {
-        this.aboutMeText = aboutMeText;
-    }
 
     @Override
     public boolean equals(Object o) {

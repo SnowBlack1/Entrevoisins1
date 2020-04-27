@@ -20,8 +20,6 @@ import org.greenrobot.eventbus.Subscribe;
 
 import java.util.List;
 
-import butterknife.ButterKnife;
-
 /**
  * A simple {@link Fragment} subclass.
  */

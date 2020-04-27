@@ -13,6 +13,7 @@ import com.openclassrooms.entrevoisins.R;
 import com.openclassrooms.entrevoisins.di.DI;
 import com.openclassrooms.entrevoisins.model.Neighbour;
 import com.openclassrooms.entrevoisins.service.NeighbourApiService;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -26,7 +27,7 @@ public class SpecificNeighbour extends AppCompatActivity {
     @BindView(R.id.name1_txt)
     TextView nameTitle;
     @BindView(R.id.address_txt)
-    TextView adress;
+    TextView address;
     @BindView(R.id.phone_txt)
     TextView phone;
     @BindView(R.id.social_txt)
@@ -44,7 +45,6 @@ public class SpecificNeighbour extends AppCompatActivity {
 
     private NeighbourApiService neighbourService;
     Neighbour neighbour;
-
 
 
     @Override
@@ -92,11 +92,10 @@ public class SpecificNeighbour extends AppCompatActivity {
                 .into(avatarImg);
         nameAvatar.setText(neighbour.getName());
         nameTitle.setText(neighbour.getName());
-        adress.setText(neighbour.getAddress());
+        address.setText(neighbour.getAddress());
         phone.setText(neighbour.getPhoneNumber());
         social.setText(neighbour.getSocial());
-        aboutMeTitle.setText(neighbour.getAboutMe());
-        aboutMeText.setText(neighbour.getAboutMeText());
+        aboutMeText.setText(neighbour.getAboutMe());
     }
 }
 

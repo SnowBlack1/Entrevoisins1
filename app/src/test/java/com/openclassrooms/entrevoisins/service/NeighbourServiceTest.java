@@ -48,7 +48,7 @@ public class NeighbourServiceTest {
         //Clear favorite list (via API)
         service.getFav().clear();
         Neighbour neighbour = new Neighbour((long) 1, "test", "test", "test",
-                "test", "test", "test", "test");
+                "test", "test", "test");
         service.getFav().add(neighbour);
         assertTrue(service.getFav().contains(neighbour));
     }
@@ -56,7 +56,7 @@ public class NeighbourServiceTest {
     @Test
     public void addFavNeighbourWithSuccess() {
         Neighbour neighbour = new Neighbour((long) 1, "test", "test","test","test",
-                "test","test","test");
+                "test","test");
         service.addFav(neighbour);
         assertTrue(service.getFav().contains(neighbour));
     }
