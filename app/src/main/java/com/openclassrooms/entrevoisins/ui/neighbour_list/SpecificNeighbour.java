@@ -68,6 +68,9 @@ public class SpecificNeighbour extends AppCompatActivity {
 
         displayFavBtn();
         setNeighbourDetails();
+        yellowStarIfFav();
+
+
     }
 
 
@@ -96,6 +99,13 @@ public class SpecificNeighbour extends AppCompatActivity {
         phone.setText(neighbour.getPhoneNumber());
         social.setText(neighbour.getSocial());
         aboutMeText.setText(neighbour.getAboutMe());
+    }
+
+    private void yellowStarIfFav() {
+        if (neighbourService.getFav().contains(neighbour)) {
+            favBtn.setImageResource(R.drawable.ic_yellow_star_24dp);
+        } else {
+        }
     }
 }
 

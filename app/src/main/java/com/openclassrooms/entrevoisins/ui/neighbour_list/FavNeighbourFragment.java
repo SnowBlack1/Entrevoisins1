@@ -20,6 +20,7 @@ import org.greenrobot.eventbus.Subscribe;
 
 import java.util.List;
 
+
 /**
  * A simple {@link Fragment} subclass.
  */
@@ -27,7 +28,6 @@ public class FavNeighbourFragment extends Fragment {
     private NeighbourApiService mApiService;
     private List<Neighbour> mFavoriteNeighbours;
     private RecyclerView mRecyclerView;
-
 
     //Create & return a new instance of the fragment
     public static FavNeighbourFragment newInstance() {
@@ -58,6 +58,7 @@ public class FavNeighbourFragment extends Fragment {
         mFavoriteNeighbours = mApiService.getFav();
         mRecyclerView.setAdapter(new NeighbourRecyclerViewAdapter(mFavoriteNeighbours) {
         });
+
     }
 
 
