@@ -4,6 +4,7 @@ import com.openclassrooms.entrevoisins.di.DI;
 import com.openclassrooms.entrevoisins.model.Neighbour;
 
 import org.hamcrest.collection.IsIterableContainingInAnyOrder;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -46,13 +47,13 @@ public class NeighbourServiceTest {
 
     @Test
     public void getFavoritesWithSuccess() {
-        //Clear favorite list (via API)
         service.getFav().clear();
-
+        List<Neighbour> neighbours = service.getNeighbours();
         List<Neighbour> favoritesNeighbour = service.getFav();
-        List<Neighbour> expectedFavoritesNeighbours = DI.getNeighbourApiService().getFav();
-        assertThat(favoritesNeighbour, IsIterableContainingInAnyOrder.containsInAnyOrder(Objects.requireNonNull(expectedFavoritesNeighbours.toArray())));
-
+        Neighbour neighbour = neighbours.get(0);
+        neighbour.setFav(true);
+        favoritesNeighbour.add(neighbour);
+        assertFalse(favoritesNeighbour.isEmpty());
     }
 
     @Test

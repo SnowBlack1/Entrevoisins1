@@ -135,4 +135,7 @@ public class Neighbour implements Serializable {
     public int hashCode() {
         return Objects.hash(id);
     }
+
+    public void setFav(boolean b) {
+    }
 }
