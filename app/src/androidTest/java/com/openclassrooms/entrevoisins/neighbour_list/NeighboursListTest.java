@@ -2,7 +2,6 @@
 package com.openclassrooms.entrevoisins.neighbour_list;
 
 import android.support.test.espresso.contrib.RecyclerViewActions;
-import android.support.test.espresso.matcher.ViewMatchers;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 
@@ -21,14 +20,14 @@ import org.junit.runner.RunWith;
 
 import java.util.List;
 
+
 import static android.support.test.espresso.Espresso.onView;
+import static android.support.test.espresso.Espresso.pressBack;
 import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.action.ViewActions.swipeLeft;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition;
-import static android.support.test.espresso.contrib.ViewPagerActions.scrollRight;
 import static android.support.test.espresso.matcher.ViewMatchers.assertThat;
-import static android.support.test.espresso.matcher.ViewMatchers.hasChildCount;
 import static android.support.test.espresso.matcher.ViewMatchers.hasMinimumChildCount;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
@@ -118,20 +117,23 @@ public class NeighboursListTest {
      */
     @Test
     public void checkIfFavTabIsDisplayingFavList() {
+        onView(withId(R.id.list_neighbours))
+               .perform(RecyclerViewActions.actionOnItemAtPosition(1, click()));
 
-        //Empty fav list
-        onView(withId(R.id.container)).perform(scrollRight());
-        FavList.clear();
-        onView(ViewMatchers.withId(R.id.fav_neighbour_layout)).check(withItemCount(0));
+        //Click on Fav btn to add neighbour to favorites
+        onView((withId(R.id.fav_btn)))
+               .perform(click());
 
-        //Add 5 Neighbours in the Favorite List and check the List's size
-        for (int i = 0; i < 5; i++) {
-            mApiService.addFav(mNeighbourList.get(i));
-        }
+        // Go back on neighbour list view and to favorites list view
+        pressBack();
 
-        //The FavList have 5 Neighbours
-        onView(ViewMatchers.withId(R.id.fav_neighbour_layout)).check(withItemCount(5));
-    }
+        //Swipe left on the View Pager to access to Favorites tab
+       onView(withId(R.id.main_content)).perform(swipeLeft());
+
+        // Neighbour should appear in the list of favorites neighbours
+        onView(withId(R.id.fav_list_neighbour_layout))
+                .check(withItemCount(1));
 
 
-}
+
+}}
