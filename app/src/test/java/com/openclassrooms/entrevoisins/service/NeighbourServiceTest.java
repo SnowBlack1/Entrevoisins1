@@ -10,6 +10,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 import java.util.List;
+import java.util.Objects;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -47,10 +48,11 @@ public class NeighbourServiceTest {
     public void getFavoritesWithSuccess() {
         //Clear favorite list (via API)
         service.getFav().clear();
-        Neighbour neighbour = new Neighbour((long) 1, "test", "test", "test",
-                "test", "test", "test");
-        service.getFav().add(neighbour);
-        assertTrue(service.getFav().contains(neighbour));
+
+        List<Neighbour> favoritesNeighbour = service.getFav();
+        List<Neighbour> expectedFavoritesNeighbours = DI.getNeighbourApiService().getFav();
+        assertThat(favoritesNeighbour, IsIterableContainingInAnyOrder.containsInAnyOrder(Objects.requireNonNull(expectedFavoritesNeighbours.toArray())));
+
     }
 
     @Test
